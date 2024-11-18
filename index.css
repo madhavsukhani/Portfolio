@@ -52,6 +52,12 @@ nav ul li a {
     text-decoration: none;
     font-size: 18px;
     position: relative;
+    display: inline-block;
+    transition: 0.5s;
+}
+nav ul li a:hover{
+    transform: translateY(-2px);
+    transform: scale(1.1);
 }
 
 nav ul li a::after {
@@ -114,6 +120,8 @@ nav ul li a:hover:after {
     font-weight: 600;
 }
 
+/* ------------------------------  TABSS ------------------------------ */
+
 .tabs {
     margin-top: 30px;
     display: flex;
@@ -121,50 +129,86 @@ nav ul li a:hover:after {
     border-bottom: 2px solid #ffffff;
 }
 
-.tabs input[type="radio"] {
+.tab-content {
     display: none;
+    position: absolute;
+    margin-top: 60px;
+}
+.tab-content span {
+    color: #ff004f;
 }
 
 .tabs label {
     cursor: pointer;
     padding: 10px 20px;
-    /* background: #f0f0f0; */
     color: #ffffff;
     border-radius: 5px 5px 0 0;
-    transition: background 0.3s, color 0.3s;
+    transition: 0.8s;
 }
-
-.tabs label:hover {
-    background: #ddd;
-    color: #000000
+.tabs input[type="radio"] {
+    display: none;
 }
 
 .tabs input[type="radio"]:checked+label {
     background: #f0f0f0;
     color: #000000;
-
     border-bottom: 2px solid #fff;
-    /* Removes the bottom border to blend with the section */
 }
 
-/* Content Styles */
-.content {
+#tab-skills:checked ~ #skills,
+#tab-experience:checked ~ #experience,
+#tab-education:checked ~ #education {
+    display: flex;
+
+}
+
+/* #about .tabs {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid #ffffff;
+}
+
+#about .tabs input[type="radio"] {
+    display: none;
+}
+
+#about .tabs label {
+    cursor: pointer;
+    padding: 10px 20px;
+    color: #ffffff;
+    border-radius: 5px 5px 0 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+#about .tabs label:hover {
+    background: #ddd;
+    color: #000000
+}
+
+#about .tabs input[type="radio"]:checked+label {
+    background: #f0f0f0;
+    color: #000000;
+
+    border-bottom: 2px solid #fff;
+}
+
+#about .content {
     margin-top: 20px;
 }
 
-.tab-content {
-    display: none;  /* Initially set to hide */
+#about .tab-content {
     padding: 20px;
     background: #f9f9f9;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.tabs input[type="radio"]:nth-of-type(1):checked~.content .skills,
-.tabs input[type="radio"]:nth-of-type(2):checked~.content .experience,
-.tabs input[type="radio"]:nth-of-type(3):checked~.content .education {
-    display: block;
-}
+#about .tabs input[type="radio"]:nth-of-type(1):checked~.content .skills, 
+#about .tabs input[type="radio"]:nth-of-type(2):checked~.content .experience, 
+#about .tabs input[type="radio"]:nth-of-type(3):checked~.content .education {
+    display: block; 
+} */
 
 /* ----------- Services ----------- */
 
@@ -365,7 +409,7 @@ nav ul li a:hover:after {
 
 .layer h3 {
     font-weight: 500;
-    margin: 20px;
+    font-size: 20px;
 }
 
 .layer a {
@@ -407,18 +451,18 @@ nav ul li a:hover:after {
 
 /* --------------CONTACT-------------- */
 .contact-left {
-    text-align: right;
-    margin: 2rem;
-    flex-basis: 40%;
+    text-align: left;
+    flex-basis: 35%;
 }
 
 .contact-right {
-    flex-basis: 50%;
+    flex-basis: 60%;
     border: 10x solid whitesmoke;
 }
 
 .contact-left {
     padding: 30px;
+    padding-top: 57px;
 }
 
 .contact-left p {
@@ -661,4 +705,157 @@ nav .fa-solid {
 }
 .last{
     font-size: 30px;
+}
+
+
+
+/* ------------------------------------ CONTACT-FORM ------------------------------------ */
+#Contact-form .box{
+    position: relative;
+    width: 100%;
+    height: 820px;
+    background:#1c1c1c;
+    border-radius: 8px;
+    overflow: scroll;
+    scrollbar-width: none; 
+
+}
+
+#Contact-form .box::before{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;            
+    height: 420px;
+    /* background: linear-gradient(0deg, transparent, transparent, #45f3ff, #45f3ff, #45f3ff); */
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+#Contact-form .box::after{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;            
+    height: 420px;
+    /* background: linear-gradient(0deg, transparent, transparent, #45f3ff, #45f3ff, #45f3ff); */
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+
+
+@keyframes animate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+#Contact-form .box form{ 
+    position: absolute;
+    inset: 4px;
+    background: #222;
+    padding: 50px 40px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+#Contact-form .box form h2{
+    color: #ababab;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: 1em;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+#Contact-form .box form .inputBox{
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+#Contact-form .box form .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background:transparent ;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 8;
+}
+#Contact-form .box form .inputBox span { 
+    position: absolute;
+    left: 0;
+    padding: 20px 0px 10px;
+    pointer-events: none;
+    color: #8f8f8f;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+#Contact-form .box form .inputBox input:valid ~ span,
+#Contact-form .box form .inputBox input:focus ~ span{
+    color: #ff004f;
+    font-size: 0.75em;
+    transform: translateY(-34px);
+}
+#Contact-form .box form .inputBox i{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: #ff004f;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+}
+#Contact-form .box form .inputBox input:valid ~ i,
+#Contact-form .box form .inputBox input:focus ~ i{
+    height: 44px;
+}
+
+#Contact-form .box form .links {
+    display: flex;
+    justify-content: space-between ;
+}
+
+#Contact-form .box form .links a{
+    margin: 10px 0;
+    font-size: 0.75em;
+    color: #8f8f8f;
+    text-decoration: none;
+}
+
+#Contact-form .box form .links a:hover,.box form .links a:nth-child(2){
+    color: #8f8f8f;
+}
+#Contact-form .box form input[type="submit"]{
+    border: none;
+    outline: none;
+    padding: 9px 25px;
+    background: #ff004f;
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 4px;
+    font-weight: 600;
+    width: 100px;
+    margin-top: 10px;
+}
+
+#Contact-form .box form input[type="submit"]:active{
+    opacity: 0.8;
 }
